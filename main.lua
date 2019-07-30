@@ -4,6 +4,9 @@ WINDOW_HEIGHT = 480
 PLAYER_WIDTH = 100
 PLAYER_HEIGHT = 20
 
+BULLET_WIDTH = 6
+BULLET_HEIGHT = 15
+
 function love.load()
   -- Player
   player = {}
@@ -16,7 +19,7 @@ function love.load()
     if player.cooldown <= 0 then
       player.cooldown = 10
       bullet = {}
-      bullet.x = player.x + PLAYER_WIDTH / 2 - 5
+      bullet.x = player.x + PLAYER_WIDTH / 2 - BULLET_WIDTH / 2
       bullet.y = player.y
       table.insert(player.bullets, bullet)
     end
@@ -79,6 +82,6 @@ function love.draw()
   love.graphics.setColor(1, 1, 1)
   for _, b in pairs(player.bullets) do
     love.graphics.rectangle('fill', b.x, b.y,
-      8, 20)
+    BULLET_WIDTH, BULLET_HEIGHT)
   end
 end
